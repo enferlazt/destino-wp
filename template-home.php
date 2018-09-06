@@ -20,63 +20,53 @@ get_header();
 				</div>
 			</div>
 			<div class="row top_content">
-
+				<?php
+				$offer = new WP_Query(array('post_type' => 'offers', 'posts_per_page' => 4));
+							if ( $offer->have_posts() ) :
+								/* Start the Loop */
+								while ( $offer->have_posts() ) :
+								$offer->the_post();
+				?>
 				<div class="col-lg-3 col-md-6 top_col">
 
 					<!-- Top Destination Item -->
 					<div class="top_item">
-						<a href="#">
-							<div class="top_item_image"><img src="<?php echo get_template_directory_uri() . '/images/top_1.jpg'; ?>" alt="https://unsplash.com/@sgabriel"></div>
+						<a href="<?php the_permalink(); ?>">
+							<div class="top_item_image"><?php the_post_thumbnail('offers_img'); ?></div>
 							<div class="top_item_content">
-								<div class="top_item_price">From $890</div>
-								<div class="top_item_text">Paris, France</div>
+								<div class="top_item_price">From $<?php if(get_post_meta(get_the_ID(), 'des_price', true)){ echo get_post_meta(get_the_ID(), 'des_price', true); }else{ echo 0; }?></div>
+								<div class="top_item_text"><?php the_title();?>
+									<div class="rating rating_5" data-rating="5">
+									<?php
+									$stars = get_the_terms( $post->ID, 'stars' );
+									foreach( $stars as $star ){
+										$n = $star->name;
+										for($i = 0; $i < 5; $i++){
+											if($n == 0){
+												echo "<i class='fa fa-star-o'></i>";
+											}
+											elseif($n == 0.5){
+												echo "<i class='fa fa-star-half-o'></i>";
+												$n = $n - 0.5;
+											}
+											else{
+												echo "<i class='fa fa-star'></i>";
+												$n = $n - 1;
+											}
+										}
+									}
+									?>
+									</div>
+								</div>
+								<div class="top_item_text"><?php $location = get_the_terms( $post->ID, 'location' );
+																foreach ($location as $loc) {
+																 	echo $loc->name;
+																 } ?></div>
 							</div>
 						</a>
 					</div>
 				</div>
-
-				<div class="col-lg-3 col-md-6 top_col">
-
-					<!-- Top Destination Item -->
-					<div class="top_item">
-						<a href="#">
-							<div class="top_item_image"><img src="<?php echo get_template_directory_uri() . '/images/top_2.jpg';?>" alt="https://unsplash.com/@jenspeter"></div>
-							<div class="top_item_content">
-								<div class="top_item_price">From $890</div>
-								<div class="top_item_text">Italian Riviera</div>
-							</div>
-						</a>
-					</div>
-				</div>
-
-				<div class="col-lg-3 col-md-6 top_col">
-
-					<!-- Top Destination Item -->
-					<div class="top_item">
-						<a href="#">
-							<div class="top_item_image"><img src="<?php echo get_template_directory_uri() . '/images/top_3.jpg';?>" alt="https://unsplash.com/@anikindimitry"></div>
-							<div class="top_item_content">
-								<div class="top_item_price">From $890</div>
-								<div class="top_item_text">Cinque Terre</div>
-							</div>
-						</a>
-					</div>
-				</div>
-
-				<div class="col-lg-3 col-md-6 top_col">
-
-					<!-- Top Destination Item -->
-					<div class="top_item">
-						<a href="#">
-							<div class="top_item_image"><img src="<?php echo get_template_directory_uri() . '/images/top_4.jpg';?>" alt="https://unsplash.com/@hellolightbulb"></div>
-							<div class="top_item_content">
-								<div class="top_item_price">From $890</div>
-								<div class="top_item_text">Santorini, Greece</div>
-							</div>
-						</a>	
-					</div>
-				</div>
-
+				<?php 			endwhile;?>
 			</div>
 		</div>
 	</div>
@@ -90,28 +80,39 @@ get_header();
 		<div class="container">
 			<div class="row">
 				<div class="last_logo"><img src="<?php echo get_template_directory_uri() . 'images/last_logo.png';?>" alt=""></div>
+				<?php
+								$img = $redux_destino['destino-sidebar-img']['url'];
+								if( $redux_destino['destino-sidebar-offer1']){
+									$post = $redux_destino['destino-sidebar-offer1'];?>
 				<div class="col-lg-6 last_col">
 					<div class="last_item">
 						<div class="last_item_content">
-							<div class="last_subtitle">maldive</div>
-							<div class="last_percent">50%</div>
+							<div class="last_subtitle"><?php the_title() ?></div>
+							<div class="last_percent"><?php if($redux_destino['destino-sidebar-percent1']) echo $redux_destino['destino-sidebar-percent1']; else echo 0;?>%</div>
 							<div class="last_title">Last Minute Offer</div>
-							<div class="last_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pulvinar sed mauris eget tincidunt. Sed lectus nulla, tempor vel.</div>
-							<div class="button last_button"><a href="offers.html">See Offer</a></div>
+							<div class="last_text"><?php echo $redux_destino['destino-sidebar-desc1']; ?></div>
+							<div class="button last_button"><a href="<?php the_permalink(); ?>">See Offer</a></div>
 						</div>
 					</div>
-				</div>
+				</div><?php
+								}
+								if( $redux_destino['destino-sidebar-offer2']){
+									$post = $redux_destino['destino-sidebar-offer2'];?>
 				<div class="col-lg-6 last_col">
 					<div class="last_item">
 						<div class="last_item_content">
-							<div class="last_subtitle">bali</div>
-							<div class="last_percent">38%</div>
+							<div class="last_subtitle"><?php the_title() ?></div>
+							<div class="last_percent"><?php if($redux_destino['destino-sidebar-percent2']) echo $redux_destino['destino-sidebar-percent2']; else echo 0;?>%</div>
 							<div class="last_title">Last Minute Offer</div>
-							<div class="last_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer pulvinar sed mauris eget tincidunt. Sed lectus nulla, tempor vel.</div>
-							<div class="button last_button"><a href="offers.html">See Offer</a></div>
+							<div class="last_text"><?php echo $redux_destino['destino-sidebar-desc2']; ?></div>
+							<div class="button last_button"><a href="<?php the_permalink(); ?>">See Offer</a></div>
 						</div>
 					</div>
 				</div>
+			<?php }
+			endif;
+			wp_reset_query();
+			?>
 			</div>
 		</div>
 	</div>
@@ -155,93 +156,27 @@ get_header();
 					<div class="popular_content d-flex flex-md-row flex-column flex-wrap align-items-md-center align-items-start justify-content-md-between justify-content-start">
 						
 						<!-- Popular Item -->
+						<?php
+						$excursions = new WP_Query(array('post_type' => 'excursions', 'posts_per_page' => 2));
+							if ( $excursions->have_posts() ) :
+								/* Start the Loop */
+								while ( $excursions->have_posts() ) :
+								$excursions->the_post();
+						?>
 						<div class="popular_item">
-							<a href="offers.html">
-								<img src="<?php echo get_template_directory_uri() . '/images/popular_1.jpg';?>" alt="image by Egzon Bytyqi">
+							<a href="<?php the_permalink(); ?>">
+								<?php the_post_thumbnail('excursion_img'); ?>
 								<div class="popular_item_content">
-									<div class="popular_item_price">From $890</div>
-									<div class="popular_item_title">Turkey</div>
+									<div class="popular_item_price">From $<?php if(get_post_meta(get_the_ID(), 'des_price', true)){ echo get_post_meta(get_the_ID(), 'des_price', true); }else{ echo 0; }?></div>
+									<div class="popular_item_title"><?php the_title(); ?></div>
 								</div>
 							</a>	
 						</div>
-
-						<!-- Popular Item -->
-						<div class="popular_item">
-							<a href="offers.html">
-								<img src="images/popular_2.jpg" alt="https://unsplash.com/@michael75">
-								<div class="popular_item_content">
-									<div class="popular_item_price">From $890</div>
-									<div class="popular_item_title">Hawai</div>
-								</div>
-							</a>	
-						</div>
-
-						<!-- Popular Item -->
-						<div class="popular_item">
-							<a href="offers.html">
-								<img src="images/popular_3.jpg" alt="https://unsplash.com/@sapegin">
-								<div class="popular_item_content">
-									<div class="popular_item_price">From $890</div>
-									<div class="popular_item_title">Ireland</div>
-								</div>
-							</a>	
-						</div>
-
-						<!-- Popular Item -->
-						<div class="popular_item">
-							<a href="offers.html">
-								<img src="images/popular_4.jpg" alt="https://unsplash.com/@kensuarez">
-								<div class="popular_item_content">
-									<div class="popular_item_price">From $890</div>
-									<div class="popular_item_title">Thailand</div>
-								</div>
-							</a>
-						</div>
-
-						<!-- Popular Item -->
-						<div class="popular_item">
-							<a href="offers.html">
-								<img src="images/popular_5.jpg" alt="https://unsplash.com/@noahbasle">
-								<div class="popular_item_content">
-									<div class="popular_item_price">From $890</div>
-									<div class="popular_item_title">Croatia</div>
-								</div>
-							</a>
-						</div>
-
-						<!-- Popular Item -->
-						<div class="popular_item">
-							<a href="offers.html">
-								<img src="images/popular_6.jpg" alt="https://unsplash.com/@seb">
-								<div class="popular_item_content">
-									<div class="popular_item_price">From $890</div>
-									<div class="popular_item_title">Bali</div>
-								</div>
-							</a>
-						</div>
-
-						<!-- Popular Item -->
-						<div class="popular_item">
-							<a href="offers.html">
-								<img src="images/popular_7.jpg" alt="https://unsplash.com/@nevenkrcmarek">
-								<div class="popular_item_content">
-									<div class="popular_item_price">From $890</div>
-									<div class="popular_item_title">France</div>
-								</div>
-							</a>	
-						</div>
-
-						<!-- Popular Item -->
-						<div class="popular_item">
-							<a href="offers.html">
-								<img src="images/popular_8.jpg" alt="https://unsplash.com/@bergeryap87">
-								<div class="popular_item_content">
-									<div class="popular_item_price">From $890</div>
-									<div class="popular_item_title">Vietnam</div>
-								</div>
-							</a>
-						</div>
-
+						<?php 
+								endwhile;
+							endif;
+						wp_reset_query();
+						?>
 					</div>
 				</div>
 			</div>

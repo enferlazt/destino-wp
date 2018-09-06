@@ -1253,7 +1253,7 @@ section
 }
 .popular_item
 {
-	width: calc((100% - 90px) / 4);
+	width: calc((100% - 90px) / 2);
 	margin-bottom: 26px;
 }
 .popular_item:nth-last-child(-n+4)

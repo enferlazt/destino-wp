@@ -105,6 +105,7 @@ if ( ! function_exists( 'destino_setup' ) ) :
 		) );
 		add_image_size( 'offers_img', 285, 390 );
 		add_image_size( 'news_mini_img', 210 );
+		add_image_size( 'excursion_img', 510, 384 );
 	}
 endif;
 add_action( 'after_setup_theme', 'destino_setup' );
