@@ -143,7 +143,7 @@ if(is_front_page()){
 				</div>
 				<div class="col-12">
 					<div class="find_form_container">
-						<form method="post" action="<?php echo home_url("/offers"); ?>" id="find_form" class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap">
+						<form method="post" action="<?php echo home_url("/?post_type=offers"); ?>" id="find_form" class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap">
 							<div class="find_item">
 								<div>Location:</div>
 								<?php
@@ -312,7 +312,7 @@ if(is_front_page()){
 				</div>
 				<div class="col-12">
 					<div class="find_form_container">
-						<form method="post" action="<?php echo home_url("/offers");?>" id="find_form" class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap">
+						<form method="post" action="<?php echo home_url("/?post_type=offers");?>" id="find_form" class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap">
 							<div class="find_item">
 								<div>Location:</div>
 								<?php
@@ -484,7 +484,7 @@ if(is_front_page()){
 				</div>
 				<div class="col-12">
 					<div class="find_form_container">
-						<form method="post" action="<?php echo home_url("/offers");?>" id="find_form" class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap">
+						<form method="post" action="<?php echo home_url("/?post_type=offers");?>" id="find_form" class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap">
 							<div class="find_item">
 								<div>Location:</div>
 								<?php
@@ -652,7 +652,7 @@ if(is_front_page()){
 				</div>
 				<div class="col-12">
 					<div class="find_form_container">
-						<form method="post" action="<?php echo home_url("/offers");?>" id="find_form" class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap">
+						<form method="post" action="<?php echo home_url("/?post_type=offers");?>" id="find_form" class="find_form d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-md-between justify-content-start flex-wrap">
 							<div class="find_item">
 								<div>Location:</div>
 								<?php

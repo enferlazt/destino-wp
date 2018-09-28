@@ -19,7 +19,8 @@ wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/
 			the_post();
 
 			get_template_part( 'template-parts/content', get_post_type() );
-
+			$map = '[pw_map address="' . get_post_meta($post->ID, 'des_map', true) . '"]';
+			echo do_shortcode($map);
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
 				comments_template();

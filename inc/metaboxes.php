@@ -871,6 +871,13 @@ function aletheme_metaboxes($meta_boxes) {
 				'std'  => '100',
 				'type' => 'text_money',
 			),
+			array(
+				'name' => __('Map','aletheme'),
+				'desc' => __('Adress your hotel for map','aletheme'),
+				'id'   => $prefix . 'map',			
+				'std'  => 'Dnipro',
+				'type' => 'text',
+			),
 		)
 	);
 

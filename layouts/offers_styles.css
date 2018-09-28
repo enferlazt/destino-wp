@@ -1187,11 +1187,14 @@ section
 	width: 25%;
 	float: left;
 }
+.excursion_img{
+	float: left;
+}
 .item.box .item_image
 {
 	width: 50%;
 }
-.item_image img
+.item_image img, .excursion_img img
 {
 	max-width: 100%;
 }

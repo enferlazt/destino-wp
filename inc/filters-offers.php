@@ -10,7 +10,6 @@ wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/
 			'relation' => 'AND'
 		),
 		'meta_query' => array(
-			'relation' => 'BETWEEN'
 		),
 	);
 
@@ -35,6 +34,7 @@ wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/
 			'key' => 'des_price',
 			'value' => array($data['min_price'], $data['max_price']),
 			'compare' => 'BETWEEN',
+			'type' => 'NUMERIC',
 		));
 	}
 
@@ -194,7 +194,9 @@ wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/
 
 			<div class="row">
 				<div class="col">
-					<?php bittersweet_pagination(); ?>
+					<?php 	
+					global $wp_query;
+					bittersweet_pagination(); ?>
 				</div>
 			</div>
 		</div>

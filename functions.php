@@ -261,36 +261,7 @@ require get_template_directory() . '/inc/metaboxes.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
-function bittersweet_pagination() {
 
-global $wp_query;
-
-//if ( $wp_query->max_num_pages <= 1 ) return; 
-
-$before_page_number = 0;
-
-$big = 9999; // need an unlikely integer
-$pages = paginate_links( array(
-        'base' => str_replace( $big, '%_%', esc_url( get_pagenum_link( $big ) ) ),
-        'format' => '?page=%#%',
-        'current' => max( 1, get_query_var('paged') ),
-        'total' => $wp_query->max_num_pages,
-        'prev_next' => false,
-        'type'  => 'array',
-		'before_page_number'  => $before_page_number,
-		'after_page_number'  => '.',
-		'show_all' => true,
-    ) );
-	//print_r(get_option('posts_per_page'));
-    if( is_array( $pages ) ) {
-        $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
-        echo '<div class="pages"><ul class="pages_list">';
-        foreach ( $pages as $page ) {
-	                echo "<li class='page'>$page</li>&nbsp;";
-	        }
-        echo '</ul></div>';
-    }
-}
 function des_custom_post_type() {
     $labels = array(
         'name'                  => __( 'Offers', 'Post type general name', 'destino' ),
@@ -356,6 +327,36 @@ function des_custom_taxonomy(){
 	register_taxonomy('stars', 'offers', $args_stars);
 }
 add_action( 'init', 'des_custom_taxonomy', 0 );
+
+function bittersweet_pagination() {
+
+	global $wp_query;
+	print_r($wp_query);
+	//if ( $wp_query->max_num_pages <= 1 ) return; 
+	echo "$wp_query->max_num_pages";
+	$before_page_number = 0;
+
+	$big = 9999; // need an unlikely integer
+	$pages = paginate_links( array(
+	        'base' => str_replace( $big, '%_%', esc_url( get_pagenum_link( $big ) ) ),
+	        'format' => '%#%',
+	        'current' => max( 1, get_query_var('paged') ),
+	        'total' => $wp_query->max_num_pages,
+	        'prev_next' => false,
+	        'type'  => 'array',
+			'before_page_number'  => $before_page_number,
+			'after_page_number'  => '.',
+	    ) );
+		//print_r(get_option('posts_per_page'));
+    if( is_array( $pages ) ) {
+        $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+        echo '<div class="pages"><ul class="pages_list">';
+        foreach ( $pages as $page ) {
+	                echo "<li class='page'>$page</li>&nbsp;";
+	        }
+        echo '</ul></div>';
+    }
+}
 
 /**
  * Filters for taxonomy.
