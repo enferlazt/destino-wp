@@ -190,8 +190,8 @@ function destino_scripts() {
 	wp_enqueue_script( 'easing', get_template_directory_uri() . '/plugins/easing/easing.js', array(), '', true );
 	wp_enqueue_script( 'parallax', get_template_directory_uri() . '/plugins/parallax-js-master/parallax.min.js', array(), '', true );
 	wp_enqueue_script( 'magnific-popup', get_template_directory_uri() . '/plugins/magnific-popup/jquery.magnific-popup.min.js', array(), '', true );
-	wp_enqueue_script( 'progressbar', get_template_directory_uri() . 'plugins/progressbar/progressbar.min.js', array(), '', true );
-	wp_enqueue_script( 'googleapis', 'https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA', array(), '', true );
+	wp_enqueue_script( 'progressbar', get_template_directory_uri() . '/plugins/progressbar/progressbar.min.js', array(), '', true );
+	//wp_enqueue_script( 'googleapis', 'https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA', array(), '', true );
 
 	wp_enqueue_script( 'destino_about_custom', get_template_directory_uri() . '/js/libs/about_custom.js', array(), '', true );
 	wp_enqueue_script( 'destino_contact_custom', get_template_directory_uri() . '/js/libs/contact_custom.js', array(), '', true );
@@ -331,9 +331,7 @@ add_action( 'init', 'des_custom_taxonomy', 0 );
 function bittersweet_pagination() {
 
 	global $wp_query;
-	print_r($wp_query);
 	//if ( $wp_query->max_num_pages <= 1 ) return; 
-	echo "$wp_query->max_num_pages";
 	$before_page_number = 0;
 
 	$big = 9999; // need an unlikely integer
@@ -398,4 +396,20 @@ function mytheme_require_plugins() {
  
     tgmpa( $plugins, $config );
  
+}
+function strip_shortcode_gallery( $content ) {
+    preg_match_all( '/' . get_shortcode_regex() . '/s', $content, $matches, PREG_SET_ORDER );
+
+    if ( ! empty( $matches ) ) {
+        foreach ( $matches as $shortcode ) {
+            if ( 'gallery' === $shortcode[2] ) {
+                $pos = strpos( $content, $shortcode[0] );
+                if( false !== $pos ) {
+                    return substr_replace( $content, '', $pos, strlen( $shortcode[0] ) );
+                }
+            }
+        }
+    }
+
+    return $content;
 }
