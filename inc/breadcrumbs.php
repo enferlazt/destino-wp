@@ -91,46 +91,25 @@ function get_breadcrumbs() {
 			}
 
 		} elseif ( is_single() && !is_attachment() ) {
-			if ( 'product' == get_post_type() ) {
-
-				if(isset($prepend)){echo $prepend;}
-
-				if ( $terms = wc_get_product_terms( $post->ID, 'product_cat', array( 'orderby' => 'parent', 'order' => 'DESC' ) ) ) {
-					$main_term = $terms[0];
-					$ancestors = get_ancestors( $main_term->term_id, 'product_cat' );
-					$ancestors = array_reverse( $ancestors );
-
-					foreach ( $ancestors as $ancestor ) {
-						$ancestor = get_term( $ancestor, 'product_cat' );
-
-						if ( ! is_wp_error( $ancestor ) && $ancestor ) {
-							echo $before . '<a href="' . esc_url(get_term_link( $ancestor )) . '">' . esc_attr($ancestor->name) . '</a>' . $after . $delimiter;
-						}
-					}
-
-					echo $before . '<a href="' . esc_url(get_term_link( $main_term )) . '">' . esc_attr($main_term->name) . '</a>' . $after . $delimiter;
-
-				}
-
-				echo $before . get_the_title() . $after;
-
-			} elseif ( get_post_type() != 'post' ) {
+			if ( get_post_type() != 'post' ) {
 				$post_type = get_post_type_object(get_post_type());
 				$slug = $post_type->rewrite;
-				printf($link, $home_link . '/' . $slug['slug'] . '/', $post_type->labels->singular_name);
+				printf($link, $home_link . '/' . $slug['slug'] . '/', $post_type->labels->name);
 				if ($show_current == 1) echo $delimiter . $before . get_the_title() . $after;
 			} else {
+				$post_type = get_post_type_object('post');
+				printf($link, get_post_type_archive_link('post') , __('News', 'destino'));
 				if ($show_current == 0) $cats = preg_replace("#^(.+)$delimiter$#", "$1", $cats);
 				$cats = str_replace('<a', $link_before . '<a' . $link_attr, $cats);
 				$cats = str_replace('</a>', '</a>' . $link_after, $cats);
 				if ($show_title == 0) $cats = preg_replace('/ title="(.*?)"/', '', $cats);
 				echo $cats;
-				if ($show_current == 1) echo $before . get_the_title() . $after;
+				if ($show_current == 1) echo $delimiter . $before . get_the_title() . $after;
 			}
 
 		} elseif ( !is_single() && !is_page() && get_post_type() != 'post' && !is_404() ) {
 			$post_type = get_post_type_object(get_post_type());
-			echo $before . $post_type->labels->singular_name . $after;
+			echo $before . $post_type->labels->name . $after;
 
 		} elseif ( is_attachment() ) {
 			$parent = get_post($parent_id);

@@ -109,7 +109,7 @@ wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/
 		endif;
 	}else{
 		global $redux_destino;
-		$default_query = new WP_Query(array('post_type' => 'offers', 'posts_per_page' => 4, 'paged' => get_query_var('paged') ? get_query_var('paged') : 1));
+		$default_query = new WP_Query(array('post_type' => 'offers', 'posts_per_page' => 5, 'paged' => get_query_var('paged') ? get_query_var('paged') : 1));
 
 		$wp_query = $default_query;
 

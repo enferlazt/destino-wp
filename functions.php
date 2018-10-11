@@ -103,9 +103,8 @@ if ( ! function_exists( 'destino_setup' ) ) :
 			'flex-width'  => true,
 			'flex-height' => true,
 		) );
-		add_image_size( 'offers_img', 285, 390 );
+		add_image_size( 'offers_img', 285, 390, true );
 		add_image_size( 'news_mini_img', 210 );
-		add_image_size( 'excursion_img', 510, 384 );
 	}
 endif;
 add_action( 'after_setup_theme', 'destino_setup' );
@@ -336,7 +335,7 @@ function bittersweet_pagination() {
 
 	$big = 9999; // need an unlikely integer
 	$pages = paginate_links( array(
-	        'base' => str_replace( $big, '%_%', esc_url( get_pagenum_link( $big ) ) ),
+	        'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
 	        'format' => '%#%',
 	        'current' => max( 1, get_query_var('paged') ),
 	        'total' => $wp_query->max_num_pages,

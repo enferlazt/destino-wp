@@ -19,9 +19,7 @@ wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/
 		while ( have_posts() ) :
 			the_post();
 
-?>
-				<div class="col">
-					<div class="section_title text-center">
+?>					<div class="section_title text-center thumbnail">
 		<?php
 		if ( is_singular() ) :
 			the_title( '<h2>', '</h2>' );
@@ -41,12 +39,10 @@ wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/
 			</div><!-- .entry-meta -->
 					
 		<?php endif; ?>
-	</header><!-- .entry-header -->
 
 	<?php destino_post_thumbnail(); ?>
 					</div>
 				</div>
-			</div>
 	<div class="entry-content">
 		<?php
 		echo strip_shortcode_gallery( get_the_content() );
@@ -56,8 +52,10 @@ wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/
 			'after'  => '</div>',
 		) );
 		?>
-	</div><!-- .entry-content --><?php
-			$map = '[pw_map address="' . get_post_meta($post->ID, 'des_map', true) . '"]';
+	</div><!-- .entry-content -->
+	<div class="col">
+		<div class="section_title text-center gallery">
+	<?php
 			if ( get_post_gallery() ) :
 	            $gallery = get_post_gallery( get_the_ID(), false );
 	            /* Loop through all the image and output them one by one */?>
@@ -75,6 +73,11 @@ wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/
 	        	</div>
 	            <?php
 	        endif;
+	        ?>
+			        	</div>
+					</div>
+	        <?php
+	        $map = '[pw_map address="' . get_post_meta($post->ID, 'des_map', true) . '"]';
 			echo do_shortcode($map);
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :

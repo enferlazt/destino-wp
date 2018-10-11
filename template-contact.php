@@ -23,17 +23,17 @@ get_header();
 					</div>
 					<div class="contact_info">
 						<?php
-						$adress = get_post_meta($post->ID, 'des_address', true);
+						$address = get_post_meta($post->ID, 'des_address', true);
 						$phone = get_post_meta($post->ID, 'des_phone', true);
 						$email = get_post_meta($post->ID, 'des_email', true);
-						if(!$adress && !$phone && !$email){}
+						if(!$address && !$phone && !$email){}
 						else{ ?>
 						<div class="contact_info_box">i</div>
 						<div class="contact_info_container">
 							<div class="contact_info_content">
 								<ul>
-									<?php if($adress){ ?>
-									<li>Address: <?php echo $adress; ?></li>
+									<?php if($address){ ?>
+									<li>Address: <?php echo $address; ?></li>
 									<?php }else{}
 									if($phone){ ?>
 									<li>Phone: <?php echo $phone; ?></li>
@@ -60,11 +60,10 @@ get_header();
 				<!-- Google Map -->
 
 				<div class="col">
-					<div id="google_map">
-						<div class="map_container">
-							<div id="map"></div>
-						</div>
-					</div>
+					<?php
+							$map = '[pw_map address="'.$address.'"]';
+							echo do_shortcode($map);
+							?>
 				</div>
 
 			</div>
