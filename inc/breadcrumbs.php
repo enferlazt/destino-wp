@@ -67,29 +67,6 @@ function get_breadcrumbs() {
 		} elseif ( is_year() ) {
 			echo $before . get_the_time('Y') . $after;
 
-		} elseif ( is_post_type_archive( 'product' ) ) {
-
-			$_name = wc_get_page_id( 'shop' ) ? get_the_title( wc_get_page_id( 'shop' ) ) : '';
-
-			if ( ! $_name ) {
-				$product_post_type = get_post_type_object( 'product' );
-				$_name = $product_post_type->labels->singular_name;
-			}
-
-			if ( is_search() ) {
-
-				echo $before . '<a href="' . esc_url(get_post_type_archive_link( 'product' )) . '">' . $_name . '</a>' . $delimiter . __( 'Search results for &ldquo;', 'woocommerce' ) . get_search_query() . '&rdquo;' . $after;
-
-			} elseif ( is_paged() ) {
-
-				echo $before . '<a href="' . esc_url(get_post_type_archive_link( 'product' )) . '">' . $_name . '</a>' . $after;
-
-			} else {
-
-				echo $before . $_name . $after;
-
-			}
-
 		} elseif ( is_single() && !is_attachment() ) {
 			if ( get_post_type() != 'post' ) {
 				$post_type = get_post_type_object(get_post_type());
@@ -109,7 +86,14 @@ function get_breadcrumbs() {
 
 		} elseif ( !is_single() && !is_page() && get_post_type() != 'post' && !is_404() ) {
 			$post_type = get_post_type_object(get_post_type());
+			global $wp_query;
+			if ( get_query_var('paged') != 0){
+				$slug = $post_type->rewrite;
+				printf($link, $home_link . '/' . $slug['slug'] . '/', $post_type->labels->name);
+				echo $delimiter . $before . __('Page ', 'destino') . get_query_var('paged') . $after;
+			}else			
 			echo $before . $post_type->labels->name . $after;
+			wp_reset_query();
 
 		} elseif ( is_attachment() ) {
 			$parent = get_post($parent_id);
@@ -156,12 +140,6 @@ function get_breadcrumbs() {
 
 		} elseif ( is_404() ) {
 			echo $before . $text['404'] . $after;
-		}
-
-		if ( get_query_var('paged') ) {
-			if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ' (';
-			echo __('Page') . ' ' . get_query_var('paged');
-			if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ')';
 		}
 
 		echo '</ul>';
