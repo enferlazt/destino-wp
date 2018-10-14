@@ -43,6 +43,7 @@ get_header();
 									<?php }else{} ?>
 								</ul>
 							</div>
+							<?php echo do_shortcode('[DISPLAY_ULTIMATE_SOCIAL_ICONS]'); ?>
 						</div>
 					<?php } ?>
 					</div>

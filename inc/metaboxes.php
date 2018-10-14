@@ -622,12 +622,6 @@ function aletheme_metaboxes($meta_boxes) {
 				'type' => 'file',
 			),
 			array(
-				'name' => __('Display Read More button?','aletheme'),
-				'id'   => $prefix . 'read_more',
-				'options'  => array(array('name' => __('Yes', 'aletheme'), 'value' => '0'), array('name' => __('No', 'aletheme'), 'value' => '1')),
-				'type' => 'select',
-			),
-			array(
 				'name' => __('Add new section with custom counters?','aletheme'),
 				'id'   => $prefix . 'new_s1',
 				'options'  => array(array('name' => __('Yes', 'aletheme'), 'value' => '0'), array('name' => __('No', 'aletheme'), 'value' => '1')),
@@ -638,6 +632,13 @@ function aletheme_metaboxes($meta_boxes) {
 				'id'   => $prefix . 'new_s2',
 				'options'  => array(array('name' => __('Yes', 'aletheme'), 'value' => '0'), array('name' => __('No', 'aletheme'), 'value' => '1')),
 				'type' => 'select',
+			),
+			array(
+				'name' => __('Link','aletheme'),
+				'desc' => __('This must be a URL','aletheme'),
+				'id'   => $prefix . 'link',
+				'std'  => '#',
+				'type' => 'text',
 			),
 		)
 	);
@@ -791,6 +792,13 @@ function aletheme_metaboxes($meta_boxes) {
 				'type' => 'text',
 			),
 			array(
+				'name' => __('First link','aletheme'),
+				'desc' => __('This must be a URL','aletheme'),
+				'id'   => $prefix . 'link1',
+				'std'  => '#',
+				'type' => 'text',
+			),
+			array(
 				'name' => __('Icon of second link','aletheme'),
 				'id'   => $prefix . 'i_link2',
 				'type' => 'file',
@@ -810,6 +818,13 @@ function aletheme_metaboxes($meta_boxes) {
 				'type' => 'text',
 			),
 			array(
+				'name' => __('Second link','aletheme'),
+				'desc' => __('This must be a URL','aletheme'),
+				'id'   => $prefix . 'link2',
+				'std'  => '#',
+				'type' => 'text',
+			),
+			array(
 				'name' => __('Icon of third link','aletheme'),
 				'id'   => $prefix . 'i_link3',
 				'type' => 'file',
@@ -826,6 +841,13 @@ function aletheme_metaboxes($meta_boxes) {
 				'desc' => __('Content from description third link','aletheme'),
 				'id'   => $prefix . 'content_link3',
 				'std'  => 'Lorem ipsum dolor sit amet, consectetur adip iscing elit. Fusce fringilla lectus nec diam auctor, ut fringilla diam sagittis.',
+				'type' => 'text',
+			),
+			array(
+				'name' => __('Third link','aletheme'),
+				'desc' => __('This must be a URL','aletheme'),
+				'id'   => $prefix . 'link3',
+				'std'  => '#',
 				'type' => 'text',
 			),
 		)

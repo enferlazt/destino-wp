@@ -77,8 +77,10 @@ wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/
 			        	</div>
 					</div>
 	        <?php
-	        $map = '[pw_map address="' . get_post_meta($post->ID, 'des_map', true) . '"]';
-			echo do_shortcode($map);
+			if(is_singular('offers') || is_singular('excursions')){
+				$map = '[pw_map address="' . get_post_meta($post->ID, 'des_map', true) . '"]';
+				echo do_shortcode($map);
+			}
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
 				comments_template();
