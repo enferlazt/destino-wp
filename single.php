@@ -30,7 +30,8 @@ wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/
 			?>
 			<div>
 				<?php
-				destino_posted_on();?>
+				echo the_time('F jS, Y');
+				?>
 			</div>
 			<div>
 				<?php
@@ -75,12 +76,12 @@ wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/
 	        endif;
 	        ?>
 			        	</div>
-					</div>
 	        <?php
 			if(is_singular('offers') || is_singular('excursions')){
 				$map = '[pw_map address="' . get_post_meta($post->ID, 'des_map', true) . '"]';
 				echo do_shortcode($map);
 			}
+			?><?php
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
 				comments_template();
@@ -89,7 +90,6 @@ wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/
 		endwhile; // End of the loop.
 		?>
 				</div>
-			</div>
 		</div>
 	</div>
 <?php
