@@ -446,6 +446,14 @@ Redux::setSection( $opt_name, array(
                 'description' => __( 'Obligatory field' , 'destino' ),
                 'default'  => array( 'url' => get_template_directory_uri() . '/images/last.jpg'),
             ),
+            array(
+                'id'       => 'destino-quote-text',
+                'type'     => 'text',
+                'title'    => __( 'Quote text', 'destino' ),
+                'desc'     => __( 'Optional field', 'destino' ),
+                'default'  => 'Traveling – it leaves you speechless, then turns you into a storyteller.
+',
+            ),
         ),
     ) );
 

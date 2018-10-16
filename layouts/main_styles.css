@@ -1624,9 +1624,21 @@ section
 {
 	background: rgba(254,60,82,0.8);
 }
+.top_item_image img{
+		height: 100%;
+		min-width: 510px;
+	}
+@media only screen and (min-width: 1200px)
+{
+	.top_item_image img{
+		min-width: 262.5px;
+	}
+}
 @media only screen and (min-width: 992px) and (max-width: 1199px)
 {
-
+	.top_item_image img{
+		min-width: 218px;
+	}
 	.header_container{
 		height: 246px;
 	}
@@ -1634,4 +1646,14 @@ section
 		height: 180px;
 	}
 	
+}
+@media only screen and (min-width: 768px) and (max-width: 991px){
+	.top_item_image img{
+		min-width: 330px;
+	}
+}
+@media only screen and (max-width: 576px){
+	.top_item_image img{
+		min-width: 100%;
+	}
 }

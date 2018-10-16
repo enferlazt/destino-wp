@@ -9,7 +9,7 @@ get_header();?>
 global $redux_destino;
 wp_enqueue_style( 'destino_offers_styles', get_template_directory_uri() . '/layouts/offers_styles.css', array('font-awesome', 'bootstrap'));
 wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/layouts/offers_responsive.css', array('font-awesome', 'bootstrap'));
-		$excursions_query = new WP_Query(array('post_type' => 'excursions', 'posts_per_page' => 5, 'paged' => get_query_var('paged') ? get_query_var('paged') : 1));
+		$excursions_query = new WP_Query(array('post_type' => 'excursions', 'posts_per_page' => 4, 'paged' => get_query_var('paged') ? get_query_var('paged') : 1));
 
 		$wp_query = $excursions_query;
 

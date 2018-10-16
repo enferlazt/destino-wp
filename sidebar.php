@@ -55,9 +55,9 @@ global $redux_destino;
 								<div class="sidebar_offer_content">
 									<div class="sidebar_offer_destination"><?php the_title() ?></div>
 									<div class="sidebar_offer_percent"><?php if($redux_destino['destino-sidebar-percent1']) echo $redux_destino['destino-sidebar-percent1']; else echo 0;?>%</div>
-									<div class="sidebar_offer_title">Last Minute Offer</div>
+									<div class="sidebar_offer_title"><?php echo __('Last Minute Offer','destino'); ?></div>
 									<div class="sidebar_offer_text"><?php echo $redux_destino['destino-sidebar-desc1']; ?></div>
-									<div class="sidebar_offer_button"><a href="<?php the_permalink(); ?>">See Offer</a></div>
+									<div class="sidebar_offer_button"><a href="<?php the_permalink(); ?>"><?php echo __('See Offer','destino'); ?></a></div>
 								</div>
 							</div>
 							<?php
@@ -70,9 +70,9 @@ global $redux_destino;
 								<div class="sidebar_offer_content">
 									<div class="sidebar_offer_destination"><?php the_title() ?></div>
 									<div class="sidebar_offer_percent"><?php if($redux_destino['destino-sidebar-percent2']) echo $redux_destino['destino-sidebar-percent2']; else echo 0;?>%</div>
-									<div class="sidebar_offer_title">Last Minute Offer</div>
+									<div class="sidebar_offer_title"><?php echo __('Last Minute Offer','destino'); ?></div>
 									<div class="sidebar_offer_text"><?php echo $redux_destino['destino-sidebar-desc2']; ?></div>
-									<div class="sidebar_offer_button"><a href="<?php the_permalink(); ?>">See Offer</a></div>
+									<div class="sidebar_offer_button"><a href="<?php the_permalink(); ?>"><?php echo __('See Offer','destino'); ?></a></div>
 								</div>
 							</div>
 							<?php
@@ -81,12 +81,21 @@ global $redux_destino;
 							wp_reset_query();
 							?>
 						</div>
-
+						<?php
+						if( $redux_destino['destino-quote-text']){
+						?>
 						<!-- Sidebar Quote -->
 						<div class="sidebar_quote">
 							<div class="quote_box"><img src="<?php echo get_template_directory_uri();?>/images/quote.png" alt=""></div>
-							<div class="quote_text"><span>“Traveling</span> – it leaves you speechless, then turns you into a storyteller.”</div>
+							<?php
+							$str = $redux_destino['destino-quote-text'];
+							$pos = strpos($str," ");
+							$str1 = substr($str,0,$pos);
+							$str2 = substr($str,$pos);
+							?>
+							<div class="quote_text"><span>“<?php echo $str1; ?></span> <?php echo $str2; ?>”</div>
 						</div>
+					<?php } ?>
 					</div>
 				</div>
 

@@ -89,9 +89,9 @@ get_header();
 						<div class="last_item_content">
 							<div class="last_subtitle"><?php the_title() ?></div>
 							<div class="last_percent"><?php if($redux_destino['destino-sidebar-percent1']) echo $redux_destino['destino-sidebar-percent1']; else echo 0;?>%</div>
-							<div class="last_title">Last Minute Offer</div>
+							<div class="last_title"><?php echo __('Last Minute Offer','destino'); ?></div>
 							<div class="last_text"><?php echo $redux_destino['destino-sidebar-desc1']; ?></div>
-							<div class="button last_button"><a href="<?php the_permalink(); ?>">See Offer</a></div>
+							<div class="button last_button"><a href="<?php the_permalink(); ?>"><?php echo __('See Offer','destino'); ?></a></div>
 						</div>
 					</div>
 				</div><?php
@@ -103,9 +103,9 @@ get_header();
 						<div class="last_item_content">
 							<div class="last_subtitle"><?php the_title() ?></div>
 							<div class="last_percent"><?php if($redux_destino['destino-sidebar-percent2']) echo $redux_destino['destino-sidebar-percent2']; else echo 0;?>%</div>
-							<div class="last_title">Last Minute Offer</div>
+							<div class="last_title"><?php echo __('Last Minute Offer','destino'); ?></div>
 							<div class="last_text"><?php echo $redux_destino['destino-sidebar-desc2']; ?></div>
-							<div class="button last_button"><a href="<?php the_permalink(); ?>">See Offer</a></div>
+							<div class="button last_button"><a href="<?php the_permalink(); ?>"><?php echo __('See Offer','destino'); ?></a></div>
 						</div>
 					</div>
 				</div>

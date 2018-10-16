@@ -11,30 +11,25 @@
  *
  * @package destino
  */
-
+wp_enqueue_style( 'destino_contact_styles', get_template_directory_uri() . '/layouts/contact_styles.css', array('font-awesome', 'bootstrap'));
+wp_enqueue_style( 'destino_contact_responsive', get_template_directory_uri() . '/layouts/contact_responsive.css', array('font-awesome', 'bootstrap'));
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
-
-		<?php
-		while ( have_posts() ) :
-			the_post();
-
-			get_template_part( 'template-parts/content', 'page' );
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
+<div class="contact"><?php
+	while ( have_posts() ) :
+		the_post(); ?>
+		<div class="container">
+			<div class="row contact_content">
+				<div class="col-lg-12">
+					<div class="contact_text">
+						<?php the_content(); ?>
+					</div>
+				</div>
+			</div>
+		</div><?php
 		endwhile; // End of the loop.
 		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
+	</div>
 <?php
-get_sidebar();
 get_footer();

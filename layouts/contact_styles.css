@@ -1507,6 +1507,18 @@ input[type = 'submit']:hover
 {
 	background: rgba(254,60,82,0.8);
 }
+.col-lg-12 ul{
+	list-style: inside;
+	margin: 10px 40px;
+}
+.col-lg-12 .contact_text li, .col-lg-12 .contact_text div{
+	font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    line-height: 2;
+    font-weight: 400;
+    color: #7d8293;
+    -webkit-font-smoothing: antialiased;
+}
 @media only screen and (min-width: 992px) and (max-width: 1199px)
 {
 
