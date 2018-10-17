@@ -29,7 +29,7 @@ global $redux_destino;
 								<div class="sidebar_featured_title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></div>
 								<div class="sidebar_featured_meta">
 									<ul>
-										<li>by <?php the_author(); ?></li>
+										<li><?php destino_posted_by(); ?></li>
 										<li><?php echo get_the_date('', $post->ID); ?></li>
 										<li><?php echo get_comments_number(get_the_ID()); if(get_comments_number(get_the_ID()) == 1){ ?> comment <?php }else{ ?> comments <?php } ?></li>
 									</ul>

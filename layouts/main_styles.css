@@ -1266,6 +1266,7 @@ section
 }
 .popular_item img
 {
+	height: 100%;
 	max-width: 100%;
 }
 .popular_item_content
@@ -1625,9 +1626,9 @@ section
 	background: rgba(254,60,82,0.8);
 }
 .top_item_image img{
-		height: 100%;
-		min-width: 510px;
-	}
+	height: 100%;
+	min-width: 510px;
+}
 @media only screen and (min-width: 1200px)
 {
 	.top_item_image img{

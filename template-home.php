@@ -13,19 +13,25 @@ get_header();
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<div class="section_title text-center">
-						<h2>Top destinations in Europe</h2>
-						<div>take a look at these offers</div>
+					<div class="section_title text-center"><?php 
+					if(get_post_meta($post->ID, "des_offers_title" , true))
+						echo "<h2>" . get_post_meta($post->ID, "des_offers_title" , true) . "</h2>";
+					if(get_post_meta($post->ID, "des_offers_subtitle" , true))
+						echo "<div>" . get_post_meta($post->ID, "des_offers_subtitle" , true) . "</div>";
+					?>
 					</div>
 				</div>
 			</div>
 			<div class="row top_content">
 				<?php
-				$offer = new WP_Query(array('post_type' => 'offers', 'posts_per_page' => 4));
-							if ( $offer->have_posts() ) :
-								/* Start the Loop */
-								while ( $offer->have_posts() ) :
-								$offer->the_post();
+				$offer = new WP_Query(array('post_type' => 'offers'));
+				for($j = 1; $j < 5; $j++){
+					if ( $offer->have_posts() ) :
+					/* Start the Loop */
+					
+						if(get_post_meta($post->ID, "des_offer$j" , true)){
+							$post = get_post_meta($post->ID, "des_offer$j" , true);
+
 				?>
 				<div class="col-lg-3 col-md-6 top_col">
 
@@ -66,7 +72,11 @@ get_header();
 						</a>
 					</div>
 				</div>
-				<?php 			endwhile;?>
+				<?php }
+
+			endif;
+			wp_reset_query();
+			} ?>
 			</div>
 		</div>
 	</div>
@@ -76,7 +86,8 @@ get_header();
 	<div class="last">
 		<!-- Image by https://unsplash.com/@thanni -->
 		<div class="last_background parallax-window" data-parallax="scroll" data-image-src="<?php echo get_template_directory_uri() . '/images/last.jpg';?>" data-speed="0.8"></div>
-
+		<?php if ( $offer->have_posts() ) :
+			/* Start the Loop */?>
 		<div class="container">
 			<div class="row">
 				<div class="last_logo"><img src="<?php echo get_template_directory_uri() . 'images/last_logo.png';?>" alt=""></div>
@@ -109,24 +120,28 @@ get_header();
 						</div>
 					</div>
 				</div>
-			<?php }
-			endif;
-			wp_reset_query();
-			?>
+			
+				<?php
+					}
+				endif;
+				wp_reset_query();
+				?>
 			</div>
 		</div>
 	</div>
 
 	<!-- Video -->
-
+	<?php if(get_post_meta($post->ID, "des_video" , true) == 0){ ?>
 	<div class="video_section d-flex flex-column align-items-center justify-content-center">
 		<!-- Image by https://unsplash.com/@peecho -->
-		<div class="video_background parallax-window" data-parallax="scroll" data-image-src="<?php echo get_template_directory_uri() . '/images/video.jpg';?>" data-speed="0.8"></div>
+		<div class="video_background parallax-window" data-parallax="scroll" data-image-src="<?php if(get_post_meta($post->ID, 'des_video_background' , true)) echo get_post_meta($post->ID, "des_video_background" , true); else echo get_template_directory_uri() . '/images/video.jpg';?>" data-speed="0.8"></div>
 		<div class="video_content">
-			<div class="video_title">A day on the island</div>
-			<div class="video_subtitle">A trip organized by Destino's team</div>
+			<?php if(get_post_meta($post->ID, "des_video_title" , true))
+				echo '<div class="video_title">' . get_post_meta($post->ID, "des_video_title" , true) . '</div>';
+			if(get_post_meta($post->ID, "des_video_subtitle" , true))
+				echo '<div class="video_subtitle">' . get_post_meta($post->ID, "des_video_subtitle" , true) . '</div>'; ?>
 			<div class="video_play">
-				<a  class="video" href="https://www.youtube.com/watch?v=BzMLA8YIgG0">
+				<a  class="video" href="<?php echo get_post_meta($post->ID, 'des_video_url' , true); ?>">
 					<svg version="1.1" id="Layer_1" class="play_button" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 						 width="140px" height="140px" viewBox="0 0 140 140" enable-background="new 0 0 140 140" xml:space="preserve">
 						<g id="Layer_2">
@@ -138,6 +153,7 @@ get_header();
 			</div>
 		</div>
 	</div>
+<?php } ?>
 
 	<!-- Popular -->
 
@@ -145,9 +161,12 @@ get_header();
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<div class="section_title text-center">
-						<h2>Popular destinations in 2018</h2>
-						<div>take a look at these offers</div>
+					<div class="section_title text-center"><?php 
+					if(get_post_meta($post->ID, "des_excursions_title" , true))
+						echo "<h2>" . get_post_meta($post->ID, "des_excursions_title" , true) . "</h2>";
+					if(get_post_meta($post->ID, "des_excursions_subtitle" , true))
+						echo "<div>" . get_post_meta($post->ID, "des_excursions_subtitle" , true) . "</div>";
+					?>
 					</div>
 				</div>
 			</div>
@@ -158,10 +177,13 @@ get_header();
 						<!-- Popular Item -->
 						<?php
 						$excursions = new WP_Query(array('post_type' => 'excursions', 'posts_per_page' => 2));
-							if ( $excursions->have_posts() ) :
+							for($j = 1; $j < 3; $j++){
+								if ( $excursions->have_posts() ) :
 								/* Start the Loop */
-								while ( $excursions->have_posts() ) :
-								$excursions->the_post();
+								
+									if(get_post_meta($post->ID, "des_excursion$j" , true)){
+										$post = get_post_meta($post->ID, "des_excursion$j" , true);
+
 						?>
 						<div class="popular_item">
 							<a href="<?php the_permalink(); ?>">
@@ -172,10 +194,10 @@ get_header();
 								</div>
 							</a>	
 						</div>
-						<?php 
-								endwhile;
+						<?php }
 							endif;
 						wp_reset_query();
+						}
 						?>
 					</div>
 				</div>
@@ -251,6 +273,40 @@ get_header();
 							<div class="special_item_content text-center">
 								<div class="special_category">Visiting</div>
 								<div class="special_title"><a href="offers.html">France</a></div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Special Offers Item -->
+					<div class="owl-item">
+						<div class="special_item d-flex flex-column align-items-center justify-content-center">
+							<div class="special_item_background"><img src="<?php echo get_template_directory_uri() . '/images/special_5.jpg';?>" alt="https://unsplash.com/@dnevozhai"></div>
+							<div class="special_item_content text-center">
+								<div class="special_category">Visiting</div>
+								<div class="special_title"><a href="offers.html">Dnipro</a></div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Special Offers Item -->
+					<div class="owl-item">
+						<div class="special_item d-flex flex-column align-items-center justify-content-center">
+							<div class="special_item_background"><img src="<?php echo get_template_directory_uri() . '/images/special_5.jpg';?>" alt="https://unsplash.com/@dnevozhai"></div>
+							<div class="special_item_content text-center">
+								<div class="special_category">Visiting</div>
+								<div class="special_title"><a href="offers.html">Germany</a></div>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- Special Offers Item -->
+					<div class="owl-item">
+						<div class="special_item d-flex flex-column align-items-center justify-content-center">
+							<div class="special_item_background"><img src="<?php echo get_template_directory_uri() . '/images/special_5.jpg';?>" alt="https://unsplash.com/@dnevozhai"></div>
+							<div class="special_item_content text-center">
+								<div class="special_category">Visiting</div>
+								<div class="special_title"><a href="offers.html">Italy</a></div>
 							</div>
 						</div>
 					</div>

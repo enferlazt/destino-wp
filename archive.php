@@ -6,7 +6,6 @@
  *
  * @package destino
  */
-
 get_header();
 ?>
 

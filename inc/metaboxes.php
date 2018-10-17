@@ -591,6 +591,123 @@ function aletheme_metaboxes($meta_boxes) {
 		'context'    => 'normal',
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left
+		'show_on'    => array( 'key' => 'page-template', 'value' => array('template-home.php'), ), // Specific post templates to display this metabox
+		'fields' => array(
+			array(
+				'name' => __('Title offers section','aletheme'),
+				'id'   => $prefix . 'offers_title',
+				'std'  => 'Top destinations in Europe',
+				'type' => 'text',
+			),
+			array(
+				'name' => __('Subtitle offers section','aletheme'),
+				'id'   => $prefix . 'offers_subtitle',
+				'std'  => 'TAKE A LOOK AT THESE OFFERS',
+				'type' => 'text',
+			),
+			array(
+				'name' => __('First offer','aletheme'),
+				'desc' => __('Select first offer from homepage','aletheme'),
+				'id'   => $prefix . 'offer1',			
+				'post_type'  => 'offers',
+				'type' => 'custom_post_select',
+			),
+			array(
+				'name' => __('Second offer','aletheme'),
+				'desc' => __('Select second offer from homepage','aletheme'),
+				'id'   => $prefix . 'offer2',			
+				'post_type'  => 'offers',
+				'type' => 'custom_post_select',
+			),
+			array(
+				'name' => __('Third offer','aletheme'),
+				'desc' => __('Select third offer from homepage','aletheme'),
+				'id'   => $prefix . 'offer3',			
+				'post_type'  => 'offers',
+				'type' => 'custom_post_select',
+			),
+			array(
+				'name' => __('Fourth offer','aletheme'),
+				'desc' => __('Select fourth offer from homepage','aletheme'),
+				'id'   => $prefix . 'offer4',			
+				'post_type'  => 'offers',
+				'type' => 'custom_post_select',
+			),
+			array(
+				'name' => __('Add section with video?','aletheme'),
+				'id'   => $prefix . 'video',
+				'options'  => array(array('name' => __('Yes', 'aletheme'), 'value' => '0'), array('name' => __('No', 'aletheme'), 'value' => '1')),
+				'type' => 'select',
+			),
+			array(
+				'name' => __('Title video section','aletheme'),
+				'id'   => $prefix . 'video_title',
+				'std'  => 'A day on the island',
+				'type' => 'text',
+			),
+			array(
+				'name' => __('Subtitle video section','aletheme'),
+				'id'   => $prefix . 'video_subtitle',
+				'std'  => "A trip organized by Destino's team",
+				'type' => 'text',
+			),
+			array(
+				'name' => __('Background video section','aletheme'),
+				'id'   => $prefix . 'video_background',
+				'std'  => '',
+				'type' => 'file',
+			),
+			array(
+				'name' => __('Link on video','aletheme'),
+				'desc' => __('This must be a video URL','aletheme'),
+				'id'   => $prefix . 'video_url',
+				'std'  => 'https://www.youtube.com/watch?v=BzMLA8YIgG0',
+				'type' => 'text',
+			),
+			array(
+				'name' => __('Title offers section','aletheme'),
+				'id'   => $prefix . 'excursions_title',
+				'std'  => 'Popular destinations in 2018',
+				'type' => 'text',
+			),
+			array(
+				'name' => __('Subtitle offers section','aletheme'),
+				'id'   => $prefix . 'excursions_subtitle',
+				'std'  => 'TAKE A LOOK AT THESE Excursions',
+				'type' => 'text',
+			),
+			array(
+				'name' => __('First excursion','aletheme'),
+				'desc' => __('Select first excursion from homepage','aletheme'),
+				'id'   => $prefix . 'excursion1',
+				'post_type'  => 'excursions',
+				'type' => 'custom_post_select',
+			),
+			array(
+				'name' => __('Second excursion','aletheme'),
+				'desc' => __('Select second excursion from homepage','aletheme'),
+				'id'   => $prefix . 'excursion2',
+				'post_type'  => 'excursions',
+				'type' => 'custom_post_select',
+			),
+			array(
+				'name' => __('Title text','aletheme'),
+				'desc' => __('Write title text for about page','aletheme'),
+				'id'   => $prefix . 'title',
+				'post_type'  => 'offers',
+				'taxonomy' => 'location',
+				'type' => 'taxonomy_multicheck',
+			),
+		)
+	);
+
+	$meta_boxes[] = array(
+		'id'         => 'about_metaboxes',
+		'title'      => __('Settings for About Page', 'aletheme'),
+		'pages'      => array( 'page', ), // Post type
+		'context'    => 'normal',
+		'priority'   => 'high',
+		'show_names' => true, // Show field names on the left
 		'show_on'    => array( 'key' => 'page-template', 'value' => array('template-about.php'), ), // Specific post templates to display this metabox
 		'fields' => array(
 			array(

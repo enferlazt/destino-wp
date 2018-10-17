@@ -1708,17 +1708,6 @@ li .current
 	background: rgba(254,60,82,0.8);
 }
 
-@media screen and (min-width: 768px) and (max-width: 1199px){
-	.post_image img{
-		height: 326px;
-	}
-}
-
-@media screen and (min-width: 576px) and (max-width: 767px){
-	.post_image img{
-		height: 241px;
-	}
-}
 @media only screen and (min-width: 992px) and (max-width: 1199px)
 {
 
