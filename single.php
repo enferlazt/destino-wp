@@ -37,9 +37,43 @@ wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/
 				<?php
 				destino_posted_by();
 				?>
-			</div><!-- .entry-meta -->
-					
-		<?php endif; ?>
+			</div><!-- .entry-meta --><?php
+		endif;
+		if ( 'offers' === get_post_type() ) :
+			?>
+			<div>
+				<div class="rating rating_5" data-rating="5">
+					<?php
+					$stars = get_the_terms( $post->ID, 'stars' );
+					foreach( $stars as $star ){
+						$n = $star->name;
+						for($i = 0; $i < 5; $i++){
+							if($n == 0){
+								echo "<i class='fa fa-star-o'></i>";
+							}
+							elseif($n == 0.5){
+								echo "<i class='fa fa-star-half-o'></i>";
+								$n = $n - 0.5;
+							}
+							else{
+								echo "<i class='fa fa-star'></i>";
+								$n = $n - 1;
+							}
+						}
+					}
+					?>
+				</div>
+			</div>
+			<div>
+				<?php
+				$location = get_the_terms( $post->ID, 'location' );
+				foreach ($location as $loc) {
+					$url = get_term_link($loc->name, 'location');
+				 	echo "<a href='$url'>".$loc->name."</a>";
+				} ?>
+			</div><?php
+		endif;
+		?>
 
 	<?php destino_post_thumbnail(); ?>
 					</div>

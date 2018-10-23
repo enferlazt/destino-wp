@@ -7,12 +7,16 @@
  * @package destino
  */
 global $redux_destino;
+global $search;
 ?>
 <!-- Sidebar -->
 				<div class="col-lg-3">
 					<div class="sidebar">
 						<div class="sidebar_search">
-							<input type="search" class="sidebar_search_input" placeholder="Search">
+							<?php 
+							$search = 3;
+							get_search_form(); 
+							?>
 						</div>
 						<?php $last_news = new WP_Query(array('post_type' => 'post','posts_per_page' => 3 ));
 							if ( $last_news->have_posts() ) :

@@ -2,12 +2,12 @@
 
 get_header();?>
 <div class="offers">
-		<div class="container">
-			<div class="row">
+	<div class="container">
+		<div class="row">
 				
 			
 <?php	filters_offers($_POST); ?>
 
-		</div>
 	</div>
+</div>
 <?php get_footer();

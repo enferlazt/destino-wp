@@ -13,8 +13,8 @@
  */
 
 
-wp_enqueue_style( 'destino_offers_styles', get_template_directory_uri() . '/layouts/news_styles.css', array('bootstrap', 'font-awesome'));
-wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/layouts/news_responsive.css', array('bootstrap', 'font-awesome'));
+wp_enqueue_style( 'destino_news_styles', get_template_directory_uri() . '/layouts/news_styles.css', array('bootstrap', 'font-awesome'));
+wp_enqueue_style( 'destino_news_responsive', get_template_directory_uri() . '/layouts/news_responsive.css', array('bootstrap', 'font-awesome'));
 
 get_header();
 ?>

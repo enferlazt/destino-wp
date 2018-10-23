@@ -206,14 +206,21 @@ get_header();
 	</div>
 
 	<!-- Special -->
-
+			<?php 
+			$offer = new WP_Query(array('post_type' => 'offers'));
+			if ( $offer->have_posts() ) :
+				if(get_post_meta(get_the_ID(), 'des_tax', true)){
+					?>
 	<div class="special">
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<div class="section_title text-center">
-						<h2>Special offers</h2>
-						<div>take a look at these offers</div>
+					<div class="section_title text-center"><?php 
+					if(get_post_meta($post->ID, "des_loc_title" , true))
+						echo "<h2>" . get_post_meta($post->ID, "des_loc_title" , true) . "</h2>";
+					if(get_post_meta($post->ID, "des_loc_subtitle" , true))
+						echo "<div>" . get_post_meta($post->ID, "des_loc_subtitle" , true) . "</div>";
+					?>
 					</div>
 				</div>
 			</div>
@@ -221,96 +228,31 @@ get_header();
 		<div class="special_content">
 			<div class="special_slider_container">
 				<div class="owl-carousel owl-theme special_slider">
-					
-					<!-- Special Offers Item -->
-					<div class="owl-item">
-						<div class="special_item">
-							<div class="special_item_background"><img src="<?php echo get_template_directory_uri() . '/images/special_1.jpg';?>" alt="https://unsplash.com/@garciasaldana_"></div>
-							<div class="special_item_content text-center">
-								<div class="special_category">Visiting</div>
-								<div class="special_title"><a href="offers.html">Indonesia</a></div>
-							</div>
-						</div>
-					</div>
-
+			<?php
+					$metabox = get_post_meta(get_the_ID(), 'des_tax', true);
+					$location = get_the_terms( $post->ID, 'location' );
+					foreach ($metabox as $meta) {
+						foreach ($location as $loc) {
+						 	if($meta == $loc->term_id){
+						 	$upload_image = get_term_meta($loc->term_id, 'term_image', true);
+						 	$url = get_term_link($loc->name, 'location');
+					?>
 					<!-- Special Offers Item -->
 					<div class="owl-item">
 						<div class="special_item d-flex flex-column align-items-center justify-content-center">
-							<div class="special_item_background"><img src="<?php echo get_template_directory_uri() . '/images/special_2.jpg';?>" alt="https://unsplash.com/@varshesh"></div>
+							<div class="special_item_background"><img src="<?php if($upload_image){ echo $upload_image; }else echo get_template_directory_uri() . '/images/special_1.jpg';?>"></div>
 							<div class="special_item_content text-center">
-								<div class="special_category">Culture</div>
-								<div class="special_title"><a href="offers.html">India</a></div>
+								<div class="special_category"><?php echo __('Visiting', 'destino'); ?></div>
+								<div class="special_title"><a href="<?php echo $url; ?>"><?php echo $loc->name; ?></a></div>
 							</div>
 						</div>
 					</div>
-
-					<!-- Special Offers Item -->
-					<div class="owl-item">
-						<div class="special_item d-flex flex-column align-items-center justify-content-center">
-							<div class="special_item_background"><img src="<?php echo get_template_directory_uri() . '/images/special_3.jpg'?>" alt="https://unsplash.com/@paulgilmore_"></div>
-							<div class="special_item_content text-center">
-								<div class="special_category">Sunbathing</div>
-								<div class="special_title"><a href="offers.html">Thailand</a></div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Special Offers Item -->
-					<div class="owl-item">
-						<div class="special_item d-flex flex-column align-items-center justify-content-center">
-							<div class="special_item_background"><img src="<?php echo get_template_directory_uri() . '/images/special_4.jpg';?>" alt="https://unsplash.com/@hellolightbulb"></div>
-							<div class="special_item_content text-center">
-								<div class="special_category">Visiting</div>
-								<div class="special_title"><a href="offers.html">Bali</a></div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Special Offers Item -->
-					<div class="owl-item">
-						<div class="special_item d-flex flex-column align-items-center justify-content-center">
-							<div class="special_item_background"><img src="<?php echo get_template_directory_uri() . '/images/special_5.jpg';?>" alt="https://unsplash.com/@dnevozhai"></div>
-							<div class="special_item_content text-center">
-								<div class="special_category">Visiting</div>
-								<div class="special_title"><a href="offers.html">France</a></div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Special Offers Item -->
-					<div class="owl-item">
-						<div class="special_item d-flex flex-column align-items-center justify-content-center">
-							<div class="special_item_background"><img src="<?php echo get_template_directory_uri() . '/images/special_5.jpg';?>" alt="https://unsplash.com/@dnevozhai"></div>
-							<div class="special_item_content text-center">
-								<div class="special_category">Visiting</div>
-								<div class="special_title"><a href="offers.html">Dnipro</a></div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Special Offers Item -->
-					<div class="owl-item">
-						<div class="special_item d-flex flex-column align-items-center justify-content-center">
-							<div class="special_item_background"><img src="<?php echo get_template_directory_uri() . '/images/special_5.jpg';?>" alt="https://unsplash.com/@dnevozhai"></div>
-							<div class="special_item_content text-center">
-								<div class="special_category">Visiting</div>
-								<div class="special_title"><a href="offers.html">Germany</a></div>
-							</div>
-						</div>
-					</div>
-
-
-					<!-- Special Offers Item -->
-					<div class="owl-item">
-						<div class="special_item d-flex flex-column align-items-center justify-content-center">
-							<div class="special_item_background"><img src="<?php echo get_template_directory_uri() . '/images/special_5.jpg';?>" alt="https://unsplash.com/@dnevozhai"></div>
-							<div class="special_item_content text-center">
-								<div class="special_category">Visiting</div>
-								<div class="special_title"><a href="offers.html">Italy</a></div>
-							</div>
-						</div>
-					</div>
-
+					<?php 
+							}
+						}
+					}
+					wp_reset_query();
+					 ?>
 				</div>
 
 				<div class="special_slider_nav d-flex flex-column align-items-center justify-content-center">
@@ -320,5 +262,7 @@ get_header();
 		</div>
 	</div>
 <?php
+				}
+			endif;
 
 get_footer();

@@ -9,6 +9,7 @@
  * @package destino
  */
 global $redux_destino;
+global $search;
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -59,10 +60,10 @@ if(is_front_page()){
 
 						<!-- Search -->
 						<div class="search">
-							<form action="#" class="search_form">
-								<input type="search" name="search_input" class="search_input ctrl_class" required="required" placeholder="Keyword">
-								<button type="submit" class="search_button ml-auto ctrl_class"><img src="<?php echo get_template_directory_uri() . '/images/search.png'; ?>" alt=""></button>
-							</form>
+							<?php 
+							$search = 1;
+							get_search_form(); 
+							?>
 						</div>
 
 						<!-- Hamburger -->
@@ -87,10 +88,10 @@ if(is_front_page()){
 		<div class="menu_inner menu_mm">
 			<div class="menu menu_mm">
 				<div class="menu_search_form_container">
-					<form action="#" id="menu_search_form">
-						<input type="search" class="menu_search_input menu_mm">
-						<button id="menu_search_submit" class="menu_search_submit" type="submit"><img src="<?php echo get_template_directory_uri() . '/images/search_2.png'; ?>" alt=""></button>
-					</form>
+					<?php 
+					$search = 2;
+					get_search_form();
+					?>
 				</div>
 				<?php
 				wp_nav_menu( array(
@@ -212,10 +213,10 @@ if(is_front_page()){
 
 						<!-- Search -->
 						<div class="search">
-							<form action="#" class="search_form">
-								<input type="search" name="search_input" class="search_input ctrl_class" required="required" placeholder="Keyword">
-								<button type="submit" class="search_button ml-auto ctrl_class"><img src="<?php echo get_template_directory_uri() . '/images/search.png'; ?>" alt=""></button>
-							</form>
+							<?php 
+							$search = 1;
+							get_search_form(); 
+							?>
 						</div>
 
 						<!-- Hamburger -->
@@ -240,10 +241,10 @@ if(is_front_page()){
 		<div class="menu_inner menu_mm">
 			<div class="menu menu_mm">
 				<div class="menu_search_form_container">
-					<form action="#" id="menu_search_form">
-						<input type="search" class="menu_search_input menu_mm">
-						<button id="menu_search_submit" class="menu_search_submit" type="submit"><img src="<?php echo get_template_directory_uri() . '/images/search_2.png'; ?>" alt=""></button>
-					</form>
+					<?php 
+					$search = 2;
+					get_search_form();
+					?>
 				</div>
 				<?php
 				wp_nav_menu( array(
@@ -375,10 +376,10 @@ if(is_front_page()){
 
 						<!-- Search -->
 						<div class="search">
-							<form action="#" class="search_form">
-								<input type="search" name="search_input" class="search_input ctrl_class" required="required" placeholder="Keyword">
-								<button type="submit" class="search_button ml-auto ctrl_class"><img src="<?php echo get_template_directory_uri() . '/images/search.png'; ?>" alt=""></button>
-							</form>
+							<?php 
+							$search = 1;
+							get_search_form(); 
+							?>
 						</div>
 
 						<!-- Hamburger -->
@@ -403,10 +404,10 @@ if(is_front_page()){
 		<div class="menu_inner menu_mm">
 			<div class="menu menu_mm">
 				<div class="menu_search_form_container">
-					<form action="#" id="menu_search_form">
-						<input type="search" class="menu_search_input menu_mm">
-						<button id="menu_search_submit" class="menu_search_submit" type="submit"><img src="<?php echo get_template_directory_uri() . '/images/search_2.png'; ?>" alt=""></button>
-					</form>
+					<?php 
+					$search = 2;
+					get_search_form(); 
+					?>
 				</div>
 				<?php
 				wp_nav_menu( array(
@@ -540,10 +541,10 @@ if(is_front_page()){
 
 						<!-- Search -->
 						<div class="search">
-							<form action="#" class="search_form">
-								<input type="search" name="search_input" class="search_input ctrl_class" required="required" placeholder="Keyword">
-								<button type="submit" class="search_button ml-auto ctrl_class"><img src="<?php echo get_template_directory_uri() . '/images/search.png'; ?>" alt=""></button>
-							</form>
+							<?php 
+							$search = 1;
+							get_search_form(); 
+							?>
 						</div>
 
 						<!-- Hamburger -->
@@ -568,10 +569,10 @@ if(is_front_page()){
 		<div class="menu_inner menu_mm">
 			<div class="menu menu_mm">
 				<div class="menu_search_form_container">
-					<form action="#" id="menu_search_form">
-						<input type="search" class="menu_search_input menu_mm">
-						<button id="menu_search_submit" class="menu_search_submit" type="submit"><img src="<?php echo get_template_directory_uri() . '/images/search_2.png'; ?>" alt=""></button>
-					</form>
+					<?php 
+					$search = 2;
+					get_search_form();
+					?>
 				</div>
 				<?php
 				wp_nav_menu( array(

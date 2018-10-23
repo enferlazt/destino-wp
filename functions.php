@@ -219,6 +219,8 @@ function admin_scripts($hook) {
 }
 add_action( 'admin_enqueue_scripts', 'admin_scripts', 10 );
 
+
+
 /**
  * Implement the Custom Header feature.
  */
@@ -314,7 +316,7 @@ function des_custom_taxonomy(){
 		'label' 	   => __('Location' ,'destino'),
 		'public'	   => true,
 		'rewrite'	   => false,
-		'hierarchical' => true
+		'hierarchical' => true,
 	);
 	$args_stars = array(
 		'label' 	   => __('Stars' ,'destino'),
@@ -326,6 +328,67 @@ function des_custom_taxonomy(){
 	register_taxonomy('stars', 'offers', $args_stars);
 }
 add_action( 'init', 'des_custom_taxonomy', 0 );
+
+add_action('location_add_form_fields', 'add_term_image', 10, 2);
+function add_term_image($taxonomy){
+    ?>
+    <div class="form-field term-group">
+        <label for="">Upload and Image</label>
+        <input type="text" name="txt_upload_image" id="txt_upload_image" value="" style="width: 77%">
+        <input type="button" id="upload_image_btn" class="button" value="Upload an Image" />
+    </div>
+    <?php
+}
+
+add_action('created_location', 'save_term_image', 10, 2);
+function save_term_image($term_id, $tt_id) {
+    if (isset($_POST['txt_upload_image']) && '' !== $_POST['txt_upload_image']){
+        $group = $_POST['txt_upload_image'];
+        add_term_meta($term_id, 'term_image', $group, true);
+    }
+}
+
+add_action('location_edit_form_fields', 'edit_image_upload', 10, 2);
+function edit_image_upload($term, $taxonomy) {
+    // get current group
+    $txt_upload_image = get_term_meta($term->term_id, 'term_image', true);
+?>
+	<tr class="form-field">
+	    <th valign="top" scope="row">
+	        <label for="">Upload and Image</label>
+	    </th>
+	    <td>
+	        <input type="text" name="txt_upload_image" id="txt_upload_image" value="<?php echo $txt_upload_image ?>" style="width: 77%">
+	        <input type="button" id="upload_image_btn" class="button" value="Upload an Image" />
+	    </td>
+	</tr>
+<?php
+}
+
+add_action('edited_location', 'update_image_upload', 10, 2);
+function update_image_upload($term_id, $tt_id) {
+    if (isset($_POST['txt_upload_image']) && '' !== $_POST['txt_upload_image']){
+        $group = $_POST['txt_upload_image'];
+        update_term_meta($term_id, 'term_image', $group);
+    }
+}
+
+function image_uploader_enqueue() {
+    global $typenow;
+    if( ($typenow == 'offers') ) {
+        wp_enqueue_media();
+
+        wp_register_script( 'meta-image', get_template_directory_uri() . '/inc/js/media-uploader.js', array( 'jquery' ) );
+        wp_localize_script( 'meta-image', 'meta_image',
+            array(
+                'title' => 'Upload an Image',
+                'button' => 'Use this Image',
+            )
+        );
+        wp_enqueue_script( 'meta-image' );
+    }
+}
+add_action( 'admin_enqueue_scripts', 'image_uploader_enqueue' );
 
 function bittersweet_pagination() {
 
@@ -411,4 +474,34 @@ function strip_shortcode_gallery( $content ) {
     }
 
     return $content;
+}
+add_filter( 'get_search_form', 'my_search_form' );
+function my_search_form( $form ) {
+	global $search;
+	$url_img = get_template_directory_uri() . "/images/search.png";
+	if($search == 1){
+		$url_img = get_template_directory_uri() . "/images/search.png";
+		$form = '
+		<form role="search" method="get" action="' . home_url( '/' ) . '" class="search_form">
+			<input type="text" class="search_input ctrl_class" required="required" placeholder="Keyword" value="' . get_search_query() . '" name="s" id="s">
+			<button type="submit" class="search_button ml-auto ctrl_class"><img src="' . $url_img . '" alt=""></button>
+		</form>';
+	}if($search == 2){
+		$url_img = get_template_directory_uri() . "/images/search_2.png";
+		$form = '
+		<form role="search" method="get" action="' . home_url( '/' ) . '" id="menu_search_form">
+			<input type="text" class="menu_search_input menu_mm" value="' . get_search_query() . '" name="s" id="s">
+			<button id="menu_search_submit" type="submit" class="menu_search_submit"><img src="' . $url_img . '" alt=""></button>
+		</form>';
+	}if($search == 3){
+		$url_img = get_template_directory_uri() . "/images/search_2.png";
+		$form = '
+		<form role="search" method="get" action="' . home_url( '/' ) . '" id="menu_search_form">
+			<input type="text" class="sidebar_search_input" placeholder="Search" value="' . get_search_query() . '" name="s" id="s">
+			<input type="hidden" value="post" name="post_type" />
+			<button id="menu_search_submit" type="submit" class="sidebar_search_submit"><img src="' . $url_img . '" alt=""></button>
+		</form>';
+		$search = 3;
+	}
+	return $form;
 }

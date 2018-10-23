@@ -585,8 +585,8 @@ function aletheme_metaboxes($meta_boxes) {
 	$prefix = "des_";
 
 	$meta_boxes[] = array(
-		'id'         => 'about_metaboxes',
-		'title'      => __('Settings for About Page', 'aletheme'),
+		'id'         => 'home_metaboxes',
+		'title'      => __('Settings for Homepage', 'aletheme'),
 		'pages'      => array( 'page', ), // Post type
 		'context'    => 'normal',
 		'priority'   => 'high',
@@ -691,9 +691,21 @@ function aletheme_metaboxes($meta_boxes) {
 				'type' => 'custom_post_select',
 			),
 			array(
-				'name' => __('Title text','aletheme'),
-				'desc' => __('Write title text for about page','aletheme'),
-				'id'   => $prefix . 'title',
+				'name' => __('Title location taxonomy section','aletheme'),
+				'id'   => $prefix . 'loc_title',
+				'std'  => 'Locations',
+				'type' => 'text',
+			),
+			array(
+				'name' => __('Subtitle location taxonomy section','aletheme'),
+				'id'   => $prefix . 'loc_subtitle',
+				'std'  => 'TAKE A LOOK AT THESE LOCATIONS',
+				'type' => 'text',
+			),
+			array(
+				'name' => __('Taxonomy carousel','aletheme'),
+				'desc' => __('Check location taxonomy from carousel','aletheme'),
+				'id'   => $prefix . 'tax',
 				'post_type'  => 'offers',
 				'taxonomy' => 'location',
 				'type' => 'taxonomy_multicheck',

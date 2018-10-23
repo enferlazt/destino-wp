@@ -64,7 +64,8 @@ wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/
 								<div class="item_title"><?php the_title(); ?></div>
 								<div class="item_title"><?php $location = get_the_terms( $post->ID, 'location' );
 																foreach ($location as $loc) {
-																 	echo "<a href='#'>".$loc->name."</a>";
+																 	$url = get_term_link($loc->name, 'location');
+																 	echo "<a href='$url'>".$loc->name."</a>";
 																 } ?></div>
 								<p><?php echo get_post_meta(get_the_ID(), 'des_desc', true); ?></p>
 								<div class="rating rating_5" data-rating="5">
@@ -149,7 +150,8 @@ wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/
 								<div class="item_title"><?php the_title(); ?></div>
 								<div class="item_title"><?php $location = get_the_terms( $post->ID, 'location' );
 																foreach ($location as $loc) {
-																 	echo "<a href='#'>".$loc->name."</a>";
+																	$url = get_term_link($loc->name, 'location');
+																 	echo "<a href='$url'>".$loc->name."</a>";
 																 } ?></div>
 								<p><?php echo get_post_meta(get_the_ID(), 'des_desc', true); ?></p>
 								<div class="rating rating_5" data-rating="5">
@@ -194,8 +196,7 @@ wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/
 
 			<div class="row">
 				<div class="col">
-					<?php 	
-					global $wp_query;
+					<?php 
 					bittersweet_pagination(); ?>
 				</div>
 			</div>
