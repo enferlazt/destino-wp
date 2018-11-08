@@ -1,9 +1,8 @@
 <?php
-
-get_header();
-global $wp_query;
 wp_enqueue_style( 'destino_offers_styles', get_template_directory_uri() . '/layouts/offers_styles.css', array('font-awesome', 'bootstrap'));
 wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/layouts/offers_responsive.css', array('font-awesome', 'bootstrap'));
+get_header();
+global $wp_query;
 global $redux_destino;
 ?>
 

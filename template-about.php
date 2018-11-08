@@ -29,7 +29,7 @@ function counter_about($a, $b, $c){
 				</div>
 			</div>
 			<div class="row about_row">
-				<div class="col-lg-6 about_col order-lg-1 order-2">
+				<div class="col-lg-<?php if(get_post_meta($post->ID, 'des_image', true)){ echo 6; }else{ echo 12;}?> about_col order-lg-1 order-2">
 					<div class="about_content">
 						<p><?php the_content(); ?></p>
 						<?php if(get_post_meta($post->ID, 'des_link', true)) {?>

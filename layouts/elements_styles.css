@@ -538,7 +538,7 @@ section
 }
 .search:hover
 {
-	background: #eb334a;
+	opacity: 0.9;
 }
 .search_form
 {

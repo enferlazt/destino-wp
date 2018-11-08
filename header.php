@@ -17,8 +17,93 @@ global $search;
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
-	<?php wp_head(); ?>
+	<?php wp_head();
+	if($redux_destino['destino-global-color'] && $redux_destino['destino-global-color'] != 'transparent'){
+		?><style type='text/css'>
+		.main_nav_item.active::after,
+		.search,
+		.menu_close_container:hover .menu_close,
+		.menu_close_container:hover .menu_close::after,
+		.newsletter_button,
+		.button,
+		.icon_box_more::before,
+		.post_image_box,
+		.quote_box,
+		.contact_info_box,
+		.special_slider_nav,
+		input[type = 'submit']
+		{
+		    background: <?php echo $redux_destino['destino-global-color']; ?>;
+		}
+		.last_button{
+			background: #131a2f;
+		}
+		.main_nav_item:hover a,
+		.main_nav_item.active a,
+		.hamburger:hover i,
+		.menu_item a:hover,
+		.icon_box_more:hover,
+		.item_more_link a:hover,
+		.detail_view:hover i,
+		.box_view:hover i,
+		.home_breadcrumb a:hover,
+		li .current,
+		.post_title a:hover,
+		.post_meta ul li a:hover,
+		.sidebar_featured_title a:hover,
+		.sidebar_featured_meta ul li a:hover,
+		.quote_text span,
+		li .current,
+		.footer_latest_item_title a:hover,
+		.footer_latest_item_date,
+		.contact_info_social ul li a i:hover
+		{
+			color: <?php echo $redux_destino['destino-global-color']; ?>;
+		}
+		.find_input:hover,
+		.sidebar_search_input:focus
+		{
+			border: solid 2px <?php echo $redux_destino['destino-global-color'] . "80"; ?>;
+		}
+		.find_input:focus
+		{
+			outline-color: <?php echo $redux_destino['destino-global-color'] . "80"; ?>;
+		    border: solid 2px <?php echo $redux_destino['destino-global-color'] . "80"; ?>;
+		}
+		.find_button
+		{
+			background: <?php echo $redux_destino['destino-global-color'] . "80"; ?> !important;
+		}
+		.icon_box:hover .svg path,
+		.icon_box:hover .svg rect,
+		.icon_box:hover .svg polygon
+		{
+			fill: <?php echo $redux_destino['destino-global-color']; ?>;
+		}
+		.sidebar_offer_content,
+		.last_item_content
+		{
+			background: <?php echo $redux_destino['destino-global-color'] . "c9"; ?>;
+		}
+		.special .owl-item.center .special_item_background::after{
+			background: <?php echo $redux_destino['destino-global-color'] . "d4"; ?>;
+		}
+		</style><?php
+	}
+	if($redux_destino['destino-st-color'] && $redux_destino['destino-st-color'] != 'transparent' || $redux_destino['destino-st-bg-color'] && $redux_destino['destino-st-color'] != 'transparent' || $redux_destino['destino-st-bg-color'] == 'transparent' && $redux_destino['destino-st-color'] != 'transparent'){?>
+		<style type='text/css'>
+		::selection
+		{
+			<?php if($redux_destino['destino-st-bg-color']){ ?>
+		    background: <?php echo $redux_destino['destino-st-bg-color']; ?>;
+		<?php }
+			if($redux_destino['destino-st-color'] && $redux_destino['destino-st-color'] != 'transparent'){ ?>
+		    color: <?php echo $redux_destino['destino-st-color']; ?>;
+		<?php } ?>
+		}
+		</style>
+	<?php }
+	?>
 </head>
 
 <body>

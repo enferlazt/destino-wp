@@ -1,4 +1,6 @@
 <?php
+wp_enqueue_style( 'destino_offers_styles', get_template_directory_uri() . '/layouts/offers_styles.css', array('font-awesome', 'bootstrap'));
+wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/layouts/offers_responsive.css', array('font-awesome', 'bootstrap'));
 get_header();?>
 	<div class="offers">
 		<div class="container">
@@ -7,8 +9,6 @@ get_header();?>
 			
 <?php		global $wp_query;
 global $redux_destino;
-wp_enqueue_style( 'destino_offers_styles', get_template_directory_uri() . '/layouts/offers_styles.css', array('font-awesome', 'bootstrap'));
-wp_enqueue_style( 'destino_offers_responsive', get_template_directory_uri() . '/layouts/offers_responsive.css', array('font-awesome', 'bootstrap'));
 		$excursions_query = new WP_Query(array('post_type' => 'excursions', 'posts_per_page' => 4, 'paged' => get_query_var('paged') ? get_query_var('paged') : 1));
 
 		$wp_query = $excursions_query;

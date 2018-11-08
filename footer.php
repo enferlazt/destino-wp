@@ -13,9 +13,8 @@ $logo = $redux_destino['destino-logo']['url'];
 ?>
 
 <!-- Newsletter -->
-
+<?php if($redux_destino['destino-subscribe'] == true){ ?>
 	<div class="newsletter">
-		<!-- Image by https://unsplash.com/@garciasaldana_ -->
 		<div class="newsletter_background" style="background-image:url(<?php echo get_template_directory_uri() . '/images/newsletter.jpg'; ?>)"></div>
 		<div class="container">
 			<div class="row">
@@ -35,7 +34,7 @@ $logo = $redux_destino['destino-logo']['url'];
 			</div>
 		</div>
 	</div>
-
+<?php } ?>
 	<!-- Footer -->
 
 	<footer class="footer">
@@ -63,25 +62,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</div>
 	</footer>
 </div>
-
-	<!--</div>
-
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'destino' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'destino' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'destino' ), 'destino', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div>
-	</footer>
-</div> -->
 
 <?php wp_footer(); ?>
 
