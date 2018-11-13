@@ -23,7 +23,7 @@ This page displays posts. Only News page have sidebar. Sidebar has a special sea
 ***
 ### Ather pages & features
 Global settings have their own characteristics: changing the overall color of the site and changing the color and background selection.
-![Global settings(site color selector)](https://image.ibb.co/hXhyef/Screenshot-1.png)
+![Global settings(site color selector)](https://image.ibb.co/imNdC0/Screenshot-4.png)
 ***
 ### Improvement plans
 Plans to correct all the shortcomings, change the default template using the style files, add more customization, complete Russian translation and improved site security
