@@ -21,7 +21,7 @@ One type pages. Сontain posts about excursions and offers. They are very simila
 This page displays posts. Only News page have sidebar. Sidebar has a special search exclusively for news, 3 recent entries, and section with last minute offers. News is also the only commentable page.
 ![News](https://image.ibb.co/bSa1zf/Screenshot-3.png)
 ***
-### Ather pages & features
+### Other pages & features
 Global settings have their own characteristics: changing the overall color of the site and changing the color and background selection.
 ![Global settings(site color selector)](https://image.ibb.co/imNdC0/Screenshot-4.png)
 ***
